@@ -11,14 +11,14 @@ make install
 ```
 
 
-## Running the application
+## Running the application locally
 
 ```bash
 make run
 ```
 
 
-## Deploying the application
+## Deploying the application to [deta](deta.sh)
 
 ```bash
 make deploy
