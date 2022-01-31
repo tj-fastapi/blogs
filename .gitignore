@@ -143,3 +143,5 @@ cython_debug/
 
 # SQLite database
 *.db
+
+.deta/
