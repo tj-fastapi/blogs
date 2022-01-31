@@ -18,7 +18,7 @@ make run
 ```
 
 
-## Deploying the application to [deta](https://deta.sh)
+## Deploying the application to [deta.sh](https://deta.sh)
 
 ```bash
 make deploy
