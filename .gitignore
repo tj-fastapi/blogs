@@ -140,6 +140,7 @@ cython_debug/
 
 # PyCharm
 .idea/
+.DS_Store
 
 # SQLite database
 *.db

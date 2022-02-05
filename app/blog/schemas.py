@@ -14,6 +14,7 @@ class Blog(BlogBase):
 
 
 class User(BaseModel):
+    id: int
     name: str
     email: str
     password: str
@@ -49,4 +50,4 @@ class Token(BaseModel):
 
 
 class TokenData(BaseModel):
-    username: Optional[str] = None
+    email: Optional[str] = None

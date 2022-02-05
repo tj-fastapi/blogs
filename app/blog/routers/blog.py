@@ -24,7 +24,7 @@ def create(
     db: Session = Depends(database.get_db),
     current_user: schemas.User = Depends(get_current_user),
 ):
-    return actions.blog.create(blog, db)
+    return actions.blog.create(blog, current_user, db)
 
 
 @router.delete(
