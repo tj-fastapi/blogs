@@ -22,17 +22,32 @@ def get(id: int, db: Session):
     return blog
 
 
-def create(blog: schemas.Blog, current_user: schemas.User, db: Session):
-    new_blog = models.Blog(
-        title=blog.title,
-        body=blog.body,
-        user_id=current_user.id,
+def create(
+    blog: schemas.Blog,
+    current_user: schemas.User,
+    db: Session
+) -> models.Blog:
+    user = (
+        db.query(models.User)
+        .filter(models.User.email == current_user.email).first()
     )
-    db.add(new_blog)
-    db.commit()
-    db.refresh(new_blog)
 
-    return new_blog
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"User with the email {current_user.email} is not found",
+        )
+    else:
+        new_blog = models.Blog(
+            title=blog.title,
+            body=blog.body,
+            user_id=user.id,
+        )
+        db.add(new_blog)
+        db.commit()
+        db.refresh(new_blog)
+
+        return new_blog
 
 
 def destroy(id: int, db: Session):
